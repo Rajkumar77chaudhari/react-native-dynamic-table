@@ -1,0 +1,64 @@
+{
+  "name": "react-native-dynamic-table",
+  "version": "1.2.3",
+  "description": "Dynamic table with adjustable column and filter feature for react native.",
+  "main": "lib/commonjs/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "bob build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rajkumar77chaudhari/react-native-dynamic-table.git"
+  },
+  "keywords": [
+    "react-native",
+    "dynamic",
+    "table"
+  ],
+  "author": "rajkumar chaudhari, fahad hawaldar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rajkumar77chaudhari/react-native-dynamic-table/issues"
+  },
+  "homepage": "https://github.com/Rajkumar77chaudhari/react-native-dynamic-table#readme",
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.21.0",
+    "react": "^18.2.0",
+    "react-native": "^0.73.1",
+    "react-native-reanimated": "^3.6.1",
+    "react-native-vector-icons": "^10.0.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.46",
+    "@types/react-native-vector-icons": "^6.4.18",
+    "react-native-builder-bob": "^0.23.2",
+    "typescript": "^5.3.3"
+  },
+  "react-native": "src/index.ts",
+  "source": "src/index.ts",
+  "module": "lib/module/index.js",
+  "files": [
+    "src",
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "types"
+  ],
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/",
+    "types/"
+  ],
+  "types": "lib/typescript/index.d.ts"
+}
