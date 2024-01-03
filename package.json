@@ -1,6 +1,6 @@
 {
   "name": "react-native-dynamic-table",
-  "version": "1.2.3",
+  "version": "1.2.8",
   "description": "Dynamic table with adjustable column and filter feature for react native.",
   "main": "lib/commonjs/index.js",
   "scripts": {

@@ -1,13 +1,23 @@
-import React, {useMemo, useState} from 'react';
-import {createTableHeaders, insert, getData} from '../helpers/TableHelpers';
-import {Alert, FlatList, Pressable, ScrollView, Text, View} from 'react-native';
-import Cell from './TableCell';
-import Animated, {useAnimatedStyle, withTiming} from 'react-native-reanimated';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import FilterName from './FilterName';
-import Button from './Button';
-import IconButton from './IconButton';
-import {MI} from './VectorIcons';
+import React, { useMemo, useState } from "react";
+import { createTableHeaders, insert, getData } from "../helpers/TableHelpers";
+import {
+  Alert,
+  FlatList,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
+import Cell from "./TableCell";
+import Animated, {
+  useAnimatedStyle,
+  withTiming,
+} from "react-native-reanimated";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import FilterName from "./FilterName";
+import Button from "./Button";
+import IconButton from "./IconButton";
+import { MI } from "./VectorIcons";
 
 interface TableProps {
   data: Record<string, any>[];
@@ -19,33 +29,32 @@ interface TableProps {
 
 const Table: React.FunctionComponent<TableProps> = ({
   data,
-  headerColor = '#4477CE',
+  headerColor = "#4477CE",
   onRowPress,
   heading,
   description,
 }) => {
   const tableHeaders = useMemo(() => createTableHeaders(data), [data]);
   const [shownHeaders, setShownHeader] = useState<
-    {title: string; width: number}[]
+    { title: string; width: number }[]
   >([]);
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [scrollEnabled, setScrollEnabled] = useState<boolean>(true);
 
-
   React.useEffect(() => {
     getData(`${heading}`)
-      .then((filterData: {title: string; width: number}[]) => {
+      .then((filterData: { title: string; width: number }[]) => {
         if (filterData !== null) {
           setShownHeader(filterData);
         } else {
           setShownHeader(createTableHeaders(data));
         }
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, []);
 
   function getLighterColor(
-    originalColor: string = '#4477CE',
+    originalColor: string = "#4477CE",
     percentLighter: number,
   ): string {
     const validPercentLighter: number = Math.max(
@@ -64,7 +73,7 @@ const Table: React.FunctionComponent<TableProps> = ({
 
     const rgbToHex = (rgb?: [number, number, number]): string => {
       if (!rgb) {
-        throw new Error('RGB values must be provided');
+        throw new Error("RGB values must be provided");
       }
       return `#${((1 << 24) | (rgb[0] << 16) | (rgb[1] << 8) | rgb[2])
         .toString(16)
@@ -132,7 +141,6 @@ const Table: React.FunctionComponent<TableProps> = ({
                 headerColor={headerColor}
                 notAdded={!contains}
                 name={name.title}
-                showFilter={showFilter}
                 key={i}
                 onPress={() => {
                   if (contains) {
@@ -247,7 +255,7 @@ const Table: React.FunctionComponent<TableProps> = ({
         </View>
         <FlatList
           onScroll={() => setScrollEnabled(true)}
-          keyExtractor={({index}) => index}
+          keyExtractor={() => Math.random().toString()}
           data={data}
           renderItem={({ item, index }) => (
             <Pressable

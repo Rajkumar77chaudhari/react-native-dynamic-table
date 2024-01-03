@@ -1,7 +1,6 @@
-import React from 'react';
+import React from "react";
 interface FilterNameProps {
     name: string;
-    showFilter: boolean;
     onPress: () => void;
     notAdded: boolean;
     headerColor?: string;
